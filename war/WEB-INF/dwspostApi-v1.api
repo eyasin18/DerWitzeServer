@@ -1,0 +1,162 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://wizzbasev2.appspot.com/_ah/api",
+  "name" : "dwspostApi",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "discovery" : [ "PUBLIC" ],
+  "adapter" : {
+    "bns" : "https://wizzbasev2.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "dws.diewitzeapp.repictures.de",
+  "ownerName" : "dws.diewitzeapp.repictures.de",
+  "methods" : {
+    "dwspostApi.getdwspost" : {
+      "path" : "dwspost/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "de.repictures.diewitzeapp.dws.dwspostEndpoint.getdwspost",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "dwspostApi.insertdwspost" : {
+      "path" : "dwspost",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "de.repictures.diewitzeapp.dws.dwspostEndpoint.insertdwspost",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "dwspost" : {
+        "id" : "dwspost",
+        "type" : "object",
+        "properties" : {
+          "servletConfig" : {
+            "$ref" : "ServletConfig"
+          },
+          "servletContext" : {
+            "$ref" : "ServletContext"
+          },
+          "servletInfo" : {
+            "type" : "string"
+          },
+          "servletName" : {
+            "type" : "string"
+          },
+          "initParameterNames" : {
+            "$ref" : "Enumeration"
+          }
+        }
+      },
+      "ServletConfig" : {
+        "id" : "ServletConfig",
+        "type" : "object",
+        "properties" : {
+          "servletContext" : {
+            "$ref" : "ServletContext"
+          },
+          "servletName" : {
+            "type" : "string"
+          },
+          "initParameterNames" : {
+            "$ref" : "Enumeration"
+          }
+        }
+      },
+      "ServletContext" : {
+        "id" : "ServletContext",
+        "type" : "object",
+        "properties" : {
+          "contextPath" : {
+            "type" : "string"
+          },
+          "attributeNames" : {
+            "$ref" : "Enumeration"
+          },
+          "minorVersion" : {
+            "type" : "integer"
+          },
+          "majorVersion" : {
+            "type" : "integer"
+          },
+          "servlets" : {
+            "$ref" : "Enumeration"
+          },
+          "servletNames" : {
+            "$ref" : "Enumeration"
+          },
+          "serverInfo" : {
+            "type" : "string"
+          },
+          "initParameterNames" : {
+            "$ref" : "Enumeration"
+          },
+          "servletContextName" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Enumeration" : {
+        "id" : "Enumeration",
+        "type" : "object",
+        "properties" : {
+        }
+      }
+    },
+    "methods" : {
+      "de.repictures.diewitzeapp.dws.dwspostEndpoint.getdwspost" : {
+        "response" : {
+          "$ref" : "dwspost"
+        }
+      },
+      "de.repictures.diewitzeapp.dws.dwspostEndpoint.insertdwspost" : {
+        "request" : {
+          "$ref" : "dwspost"
+        },
+        "response" : {
+          "$ref" : "dwspost"
+        }
+      }
+    }
+  }
+}
